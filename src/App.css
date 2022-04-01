@@ -83,7 +83,7 @@ box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12);
   color: #FFFFFF;
   display: flex;
   padding: 2vmax;
-  justify-content:center;
+  justify-content:space-evenly;
 }
 .foot1{
   margin-right: 4vw;
