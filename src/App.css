@@ -85,6 +85,9 @@ box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12);
   padding: 2vmax;
   justify-content:space-evenly;
 }
+.footer p{
+  font-size: 14px;
+}
 .foot1{
   margin-right: 4vw;
 }
@@ -99,4 +102,99 @@ box-shadow:0px 0px 2px 0px rgba(0,0,0,0.12);
 }
 .foot2 h1{
 font-size: 16px;
+}
+.matchheader{
+  background-color:#335A7B;
+  color: #FFFFFF;
+  height: 4vh;
+  padding: 1vmax;
+}
+.matchheader h1{
+  font-size: 16px;
+}
+.commentaryheader{
+  background-color:#335A7B;
+  color: #FFFFFF;
+  padding: 1vmax;
+}
+.score{
+  padding: 1vmax;
+ 
+}
+.score h2{
+  font-size: 14px;
+  color: #C7343C;
+}
+.score h1{
+  font-size: 16px;
+}
+.commentaryheader h1{
+  font-size: 16px;
+}
+.box{
+  border: 1px solid #DDDDDD;
+  width: 50%;
+  display: flex;
+  border-collapse: collapse;
+  color: #4A90E2;
+}
+.box h4{
+  color: #4A90E2;
+}
+.smallbox{
+  border-right: 1px solid #DDDDDD;
+  width: 50%;
+  border-collapse: collapse;
+  padding: 1vmax;
+  font-weight: 600;
+  text-align: center;
+}
+.score h4{
+  color: #4A90E2;
+  margin-bottom: 2vmax;
+}
+.score h5{
+  opacity: 0.5;
+}
+#battingscorecard tr:nth-child(even){background-color: #f2f2f2;}
+
+#battingscorecard{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 5vh;
+}
+#battingscorecard th{
+  font-size: 16px;
+  font-weight: 100;
+  opacity: 0.99;
+  text-align: left;
+  padding: 5px;
+}
+#battingscorecard td{
+  font-size: 16px;
+  padding: 5px;
+  width: 100%;
+  outline: none;
+  border: none;
+  margin: 0;
+}
+#playername{
+  color: #4A90E2;
+  font-weight: 700;
+}
+.batting{
+  background-color: #113D59;
+  color: #FFFFFF;
+  padding: 5px;
+}
+.matchinfo{
+  margin-bottom: 2vmax;
+}
+.matchin{
+  border-bottom: 1px solid #DDDDDD;
+  padding: 1vmax;
+}
+.matchin h1{
+  font-size: 16px;
+  color: #4A90E2;
 }
