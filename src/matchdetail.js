@@ -34,18 +34,18 @@ useEffect(()=>{
 </div>
 <div className="score">
 <h2>{commentary?.matchHeaders.status}</h2>
-<h1>{commentary?.miniscore.inningsScores[0].inningsScore[0].batTeamShortName}-
-{commentary?.miniscore.inningsScores[0].inningsScore[0].runs}/
-{commentary?.miniscore.inningsScores[0].inningsScore[0].wickets}
-({commentary?.miniscore.inningsScores[0].inningsScore[0].overs})
+<h1>{commentary?.miniscore.inningsScores[0].inningsScore[0]?.batTeamShortName}-
+{commentary?.miniscore.inningsScores[0].inningsScore[0]?.runs}/
+{commentary?.miniscore.inningsScores[0].inningsScore[0]?.wickets}
+({commentary?.miniscore.inningsScores[0].inningsScore[0]?.overs})
 </h1>
-<h1>{commentary?.miniscore.inningsScores[0].inningsScore[1].batTeamShortName}-
-{commentary?.miniscore.inningsScores[0].inningsScore[1].runs}/
-{commentary?.miniscore.inningsScores[0].inningsScore[1].wickets}
-({commentary?.miniscore.inningsScores[0].inningsScore[1].overs})</h1>
-<p>CRR: {commentary?.miniscore.crr}</p>
+<h1>{commentary?.miniscore.inningsScores[0]?.inningsScore[1]?.batTeamShortName}-
+{commentary?.miniscore.inningsScores[0]?.inningsScore[1]?.runs}/
+{commentary?.miniscore.inningsScores[0]?.inningsScore[1]?.wickets}
+({commentary?.miniscore.inningsScores[0]?.inningsScore[1]?.overs})</h1>
+<p>CRR: {commentary?.miniscore?.crr}</p>
 <h5>Player of the match</h5>
-<h4>{commentary?.matchHeaders.momPlayers.player[0].name}</h4>
+<h2>{commentary?.matchHeaders.momPlayers.player.length>0?commentary?.matchHeaders.momPlayers.player[0].name:null}</h2>
 <div className="box">
 <div className="smallbox" onClick={()=>navigate(`/scorecard/${id.id}`)}>Scorecard</div>
 <div className="smallbox">Refresh</div>
@@ -54,6 +54,15 @@ useEffect(()=>{
 <div className="commentaryheader">
 <h1>Commentary</h1>
 
+</div>
+<div>
+    {commentary?.commentaryLines?.map((c)=><>
+  <div className="commentary">
+    <p><span className="overnum"><h2>{c.commentary?.overNum?c.commentary?.overNum:null}</h2></span>
+    {c?.commentary?.commtxt}
+    </p>
+    </div>
+    </>)}
 </div>
 <Footer/>
 </>

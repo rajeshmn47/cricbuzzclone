@@ -200,3 +200,18 @@ font-size: 16px;
   font-size: 16px;
   color: #4A90E2;
 }
+.commentary{
+  padding: 1vmax;
+  border-bottom: 1px solid #DDDDDD;
+}
+.commentary p{
+  font-size: 14px;
+}
+.overnum{
+  font-weight: 400;
+}
+.overnum h2{
+  display: inline;
+  font-size: 14px;
+  font-weight: 800;
+}

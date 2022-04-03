@@ -12,7 +12,8 @@ const[matches,setMatches]=useState()
 useEffect(()=>{
   const options = {
     method: 'GET',
-    url: `https://unofficial-cricbuzz.p.rapidapi.com/matches/list?matchState='live'`,
+    url: `https://unofficial-cricbuzz.p.rapidapi.com/matches/list`,
+    params: {matchState: 'live'},
     headers: {
       'X-RapidAPI-Host': 'unofficial-cricbuzz.p.rapidapi.com',
       'X-RapidAPI-Key': '3ddef92f6emsh8301b1a8e1fd478p15bb8bjsnd0bb5446cadc'
@@ -49,7 +50,7 @@ Matches
 </h1>
 <h2>{m.seriesAdWrapper[0].seriesMatches.matches[0].matchInfo.status}</h2>
 </div>
-</>):'ok bro'}
+</>):'loading'}
 
   </div>
   <button className='more'>More Matches</button>
