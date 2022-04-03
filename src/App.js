@@ -13,8 +13,8 @@ function App() {
    <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/matchdetail' element={<Matchdetail/>} />
-          <Route path='/scorecard' element={<Scorecard/>} />
+          <Route path='/matchdetail/:id' element={<Matchdetail/>} />
+          <Route path='/scorecard/:id' element={<Scorecard/>} />
         </Routes>
       </BrowserRouter>
   </>

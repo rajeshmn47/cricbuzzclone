@@ -1,75 +1,80 @@
 import Footer from './footer'
+import {useNavigate,useParams} from 'react-router-dom'
+import { useState,useEffect } from 'react'
+import axios from 'axios'
 
 export const Scorecard=()=>{
+const id=useParams()
+const [scorecard,setScorecard]=useState()
+console.log(id)
+useEffect(()=>{
+    const options = {
+        method: 'GET',
+        url: 'https://unofficial-cricbuzz.p.rapidapi.com/matches/get-scorecard',
+        params: {matchId: id.id},
+        headers: {
+          'X-RapidAPI-Host': 'unofficial-cricbuzz.p.rapidapi.com',
+          'X-RapidAPI-Key': '3ddef92f6emsh8301b1a8e1fd478p15bb8bjsnd0bb5446cadc'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data.scorecard);
+          setScorecard(response.data.scorecard)
+      }).catch(function (error) {
+          console.error(error);
+      });
+},[])
     return(
         <>
         <div className="batting">Batting</div>
-        <table id='battingscorecard'>
+        {scorecard?scorecard.map((s,index)=><>
+        <div style={{padding:'1vmax'}}>{index===0?'Innings1':'Innings2'}</div>
+            <table id='battingscorecard'>
             
-                <tr>
-                    <th>
-                        Player
-                    </th>
-                    <th>
-                        R(B)
-                    </th>
-                    <th>
-                        4s
-                    </th>
-                    <th>
-                        6s
-                    </th>
-                    <th>
-                        SR
-                    </th>
-                </tr>
-                <tr>
-                <td id='playername'>
-                        Mayank Agarwal
-                    </td>
-                    <td>
-                        1(5)
-                    </td>
-                    <td>
-                        0
-                    </td>
-                    <td>
-                    6
-                    </td>
-                    <td>
-                        150.5
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    c Southee b Narine
-                    </td>
-                </tr>
-                <tr>
-                <td id='playername'>
-                        Mayank Agarwal
-                    </td>
-                    <td>
-                        1(5)
-                    </td>
-                    <td>
-                        0
-                    </td>
-                    <td>
-                    6
-                    </td>
-                    <td>
-                        150.5
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    c Southee b Narine
-                    </td>
-                </tr>
-            
-        </table>
-        <div className="batting">Bowling</div>
+            <tr>
+                <th>
+                    Player
+                </th>
+                <th>
+                    R(B)
+                </th>
+                <th>
+                    4s
+                </th>
+                <th>
+                    6s
+                </th>
+                <th>
+                    SR
+                </th>
+            </tr>
+           {s?.batsman.map((b)=><>
+            <tr>
+            <td id='playername'>
+                {b.name}
+                </td>
+                <td>
+                    {b.runs}({b.balls})
+                </td>
+                <td>
+                    {b.fours}
+                </td>
+                <td>
+                {b.sixes}
+                </td>
+                <td>
+                {b.strkRate}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                c Southee b Narine
+                </td>
+            </tr>
+            </>)}
+    </table>
+    <div className="batting">Bowling</div>
         <table id='battingscorecard'>
             
             <tr>
@@ -80,7 +85,7 @@ export const Scorecard=()=>{
                     O
                 </th>
                 <th>
-                    M
+                    E
                 </th>
                 <th>
                     R
@@ -90,48 +95,28 @@ export const Scorecard=()=>{
                 </th>
             </tr>
       
-      
+            {s.bowler.map((b)=><>
             <tr>
             <td id='playername'>
-                    Mayank Agarwal
+                {b.name}
                 </td>
                 <td>
-                    4
+                    {b.overs}
                 </td>
                 <td>
-                    2
+                    {b.economy}
                 </td>
                 <td>
-            23
+            {b.runs}
                 </td>
                 <td>
-                    4
+                    {b.wickets}
                 </td>
              
             </tr>
-            <tr>
-            <td id='playername'>
-                    Mayank Agarwal
-                </td>
-                <td>
-                    4
-                </td>
-                <td>
-                    2
-                </td>
-                <td>
-            23
-                </td>
-                <td>
-                    4
-                </td>
-             
-            </tr>
-       
-        
+          </>)}
     </table>
-
-        <div className="batting">Fall of Wickets</div>
+    <div className="batting">Fall of Wickets</div>
         <table id='battingscorecard'>
             
             <tr>
@@ -149,43 +134,32 @@ export const Scorecard=()=>{
                   Player  
                 </th>
             </tr>
-      
-      
-            <tr>
+      {s.fow[0].fow.map((f,index)=><>  <tr>
        
                 <td>
-                    1
+                    {index}
                 </td>
                 <td>
-                    2
+                    {f.runs}
                 </td>
                 <td>
-            2.3
+            {f.overNbr}
                 </td>
                 <td>
-                    Sachin
+            {f.batsmanName}
                 </td>
              
             </tr>
-            <tr>
-       
-                <td>
-                    2
-                </td>
-                <td>
-                    5.3
-                </td>
-                <td>
-            23
-                </td>
-                <td>
-                    Sehwag
-                </td>
-             
-            </tr>
-       
+         
+       </>)}
         
     </table>
+        </>)
+        :'loading'}
+      
+
+
+
     <div className="batting">Match Info</div>
 <div className="matchinfo">
     <div className="matchin">

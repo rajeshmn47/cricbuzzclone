@@ -108,9 +108,11 @@ font-size: 16px;
   color: #FFFFFF;
   height: 4vh;
   padding: 1vmax;
+  display: flex;
+  align-items: center;
 }
 .matchheader h1{
-  font-size: 16px;
+  font-size: 14px;
 }
 .commentaryheader{
   background-color:#335A7B;

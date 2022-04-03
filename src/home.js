@@ -1,8 +1,31 @@
 import Footer from "./footer"
 import img from './images/vision.png'
-
+import { useNavigate } from "react-router-dom"
+import {useEffect,useState} from 'react'
+import { useGetMatchesQuery,useGetMatchDetailsQuery } from './cricbuzzApi';
+import axios from 'axios'
 
 export const Home=()=>{
+const navigate=useNavigate()
+const[matches,setMatches]=useState()
+
+useEffect(()=>{
+  const options = {
+    method: 'GET',
+    url: `https://unofficial-cricbuzz.p.rapidapi.com/matches/list?matchState='live'`,
+    headers: {
+      'X-RapidAPI-Host': 'unofficial-cricbuzz.p.rapidapi.com',
+      'X-RapidAPI-Key': '3ddef92f6emsh8301b1a8e1fd478p15bb8bjsnd0bb5446cadc'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response.data)
+    setMatches(response.data.typeMatches)
+  }).catch(function (error) {
+    console.error(error);
+  })
+},[])
     return(
         <>
 <div className='home'>
@@ -15,12 +38,19 @@ export const Home=()=>{
 Matches
   </div>
   <div className='matchescontainer'>
-<div className='match'>
-  <p>7th match Indian Premier League 2022</p>
-  <h1>LSG 211/4 (19.3)</h1>
-  <h1>LSG 211/4 (19.3)</h1>
-  <h2>Lucknow Super giants won by 6 wkts</h2>
+
+{matches?matches.map((m,index)=><>
+  <div className='match' onClick={()=>navigate(`/matchdetail/${m.seriesAdWrapper[0].seriesMatches.matches[0].matchInfo.matchId}`)}>
+<p>{m.seriesAdWrapper[0].seriesMatches.seriesName}</p>
+<h1>{m.seriesAdWrapper[0].seriesMatches.matches[0].matchInfo.team1.teamName} {m.seriesAdWrapper[0].seriesMatches.matches[0].matchScore?.team1Score?.inngs1?.runs}
+/{m.seriesAdWrapper[0].seriesMatches.matches[0].matchScore?.team1Score?.inngs1?.wickets}</h1>
+<h1> {m.seriesAdWrapper[0].seriesMatches.matches[0].matchInfo.team2.teamName} {m.seriesAdWrapper[0].seriesMatches.matches[0].matchScore?.team2Score?.inngs1?.runs}
+/{m.seriesAdWrapper[0].seriesMatches.matches[0].matchScore?.team2Score?.inngs1?.wickets}
+</h1>
+<h2>{m.seriesAdWrapper[0].seriesMatches.matches[0].matchInfo.status}</h2>
 </div>
+</>):'ok bro'}
+
   </div>
   <button className='more'>More Matches</button>
   <div className='matches'>
