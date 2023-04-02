@@ -93,7 +93,7 @@ export const Scorecard = () => {
                 <th>Ovs</th>
                 <th id="plyname">Player</th>
               </tr>
-              {s.fow[0].fow.map((f, index) => (
+              {s?.fow[0]?.fow?.map((f, index) => (
                 <>
                   {" "}
                   <tr>
