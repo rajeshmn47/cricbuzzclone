@@ -126,11 +126,11 @@ export const Home = () => {
         <button className="more">More Videos</button>
         <div className="matches">IPL 2022 Stats</div>
         <div style={{ display: "flex", padding: "1vmax" }}>
-          <div style={{ width: "20%" }}>
+          <div style={{ width: "35%" }}>
             <h2 style={{ opacity: "0.5", fontSize: "16px" }}>Most Runs</h2>
             <h2 style={{ opacity: "0.5", fontSize: "16px" }}>Most Wickets</h2>
           </div>
-          <div style={{ width: "29%" }}>
+          <div style={{ width: "65%" }}>
             <h2 style={{ fontSize: "16px", color: "#4A90E2" }}>
               Faf du plessis{" "}
               <span style={{ fontSize: "12px", color: "#113D59" }}>
