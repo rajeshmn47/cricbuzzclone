@@ -127,12 +127,34 @@ export const Scorecard = () => {
       <div className="batting">Match Info</div>
       <div className="matchinfo">
         <div className="matchin">
-          <h1>PBKS playing</h1>
-          <p>rahesh(c),sa</p>
+          {scorecard
+            ? scorecard.map((s, index) => (
+                <>
+                  {index == 0 ? (
+                    <>
+                      {s?.batsman.map((b) => (
+                        <span>{b.name},</span>
+                      ))}
+                    </>
+                  ) : null}
+                </>
+              ))
+            : null}
         </div>
         <div className="matchin">
-          <h1>KKR playing</h1>
-          <p>rahesh(c),sachin,rahesh(c),sachin,rahesh(c),sachin</p>
+          {scorecard
+            ? scorecard.map((s, index) => (
+                <>
+                  {index == 1 ? (
+                    <>
+                      {s?.batsman.map((b) => (
+                        <span>{b.name},</span>
+                      ))}
+                    </>
+                  ) : null}
+                </>
+              ))
+            : null}
         </div>
       </div>
       <Footer />

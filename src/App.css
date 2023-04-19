@@ -218,6 +218,7 @@
   font-weight: 700;
   float: right;
   white-space: nowrap;
+  width: 55% !important;
 }
 #plyname {
   font-weight: 700;
