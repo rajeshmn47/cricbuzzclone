@@ -116,6 +116,8 @@ export const Scorecard = () => {
             display: "flex",
             justifyContent: "center",
             margin: "10px 0",
+            minHeight:"40vh",
+            alignItems:"center"
           }}
         >
           <CircularProgress />

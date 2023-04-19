@@ -33,7 +33,7 @@ export const Matchdetail = () => {
   return (
     <>
       {commentary ? (
-        <>
+        <div style={{minHeight:'100px'}}>
           <div className="topbar">cricbuzz</div>
           <div className="matchheader">
             <h1>{commentary?.appIndex.seoTitle}</h1>
@@ -59,12 +59,12 @@ export const Matchdetail = () => {
               ({commentary?.miniscore.inningsScores[0]?.inningsScore[1]?.overs})
             </h1>
             <p>CRR: {commentary?.miniscore?.crr}</p>
-            <h5>Player of the match</h5>
-            <h2>
-              {commentary?.matchHeaders.momPlayers.player?.length > 0
-                ? commentary?.matchHeaders.momPlayers.player[0].name
-                : null}
-            </h2>
+            {commentary?.matchHeaders.momPlayers.player?.length > 0 ? (
+              <>
+                <h5>Player of the match</h5>
+                <h2>{commentary?.matchHeaders.momPlayers.player[0].name}</h2>
+              </>
+            ) : null}
             <div className="box">
               <div
                 className="smallbox"
@@ -88,19 +88,21 @@ export const Matchdetail = () => {
                         {c.commentary?.overNum ? c.commentary?.overNum : null}
                       </h2>
                     </span>
-                    {c?.commentary?.commtxt}
+                    {c?.commentary?.commtxt.replace("$", "").replace("BO", "")}
                   </p>
                 </div>
               </>
             ))}
           </div>
-        </>
+        </div>
       ) : (
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             margin: "10px 0",
+            minHeight:"40vh",
+            alignItems:"center"
           }}
         >
           <CircularProgress />
