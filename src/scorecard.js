@@ -22,7 +22,7 @@ export const Scorecard = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.scorecard);
+        console.log(response.data.scorecard, "scorecard");
         setScorecard(response.data.scorecard);
       })
       .catch(function (error) {
@@ -132,6 +132,9 @@ export const Scorecard = () => {
                 <>
                   {index == 0 ? (
                     <>
+                      <p style={{ fontWeight: "600" }}>
+                        {s.batTeamName} playing
+                      </p>
                       {s?.batsman.map((b) => (
                         <span>{b.name},</span>
                       ))}
@@ -147,6 +150,9 @@ export const Scorecard = () => {
                 <>
                   {index == 1 ? (
                     <>
+                      <p style={{ fontWeight: "600" }}>
+                        {s.batTeamName} playing
+                      </p>
                       {s?.batsman.map((b) => (
                         <span>{b.name},</span>
                       ))}
