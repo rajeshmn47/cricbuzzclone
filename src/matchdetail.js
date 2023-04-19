@@ -33,7 +33,7 @@ export const Matchdetail = () => {
   return (
     <>
       {commentary ? (
-        <div style={{minHeight:'100px'}}>
+        <div style={{ minHeight: "100px" }}>
           <div className="topbar">cricbuzz</div>
           <div className="matchheader">
             <h1>{commentary?.appIndex.seoTitle}</h1>
@@ -101,8 +101,8 @@ export const Matchdetail = () => {
             display: "flex",
             justifyContent: "center",
             margin: "10px 0",
-            minHeight:"40vh",
-            alignItems:"center"
+            minHeight: "40vh",
+            alignItems: "center",
           }}
         >
           <CircularProgress />
