@@ -51,14 +51,15 @@ export const Scorecard = () => {
                   <tr>
                     <td id="playername">{b.name}</td>
                     <td>
-                      {b.runs}({b.balls})
+                      {b.runs}
+                      {b.balls && `(${b.balls})`}
                     </td>
                     <td>{b.fours}</td>
                     <td>{b.sixes}</td>
-                    <td>{b.strkRate}</td>
+                    <td>{b.runs && b.strkRate}</td>
                   </tr>
-                  <tr>
-                    <td>c Southee b Narine</td>
+                  <tr id="evenrow">
+                    <td id="howout">{b.outDec}</td>
                   </tr>
                 </>
               ))}
@@ -125,7 +126,7 @@ export const Scorecard = () => {
       <div className="matchinfo">
         <div className="matchin">
           <h1>PBKS playing</h1>
-          <p>rahesh(c),sachin,rahesh(c),sachin,rahesh(c),sachin</p>
+          <p>rahesh(c),sa</p>
         </div>
         <div className="matchin">
           <h1>KKR playing</h1>

@@ -224,6 +224,17 @@
   float: right;
   white-space: nowrap;
 }
+#howout {
+  white-space: nowrap;
+  width: 100px;
+  overflow: hidden;
+}
+#evenrow {
+  height: 25px;
+  width: 170px;
+  display: block;
+  text-overflow: ellipsis;
+}
 .batting {
   background-color: #113d59;
   color: #ffffff;
